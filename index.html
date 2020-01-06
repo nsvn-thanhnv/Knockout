@@ -1,0 +1,53 @@
+<html>
+
+<head>
+    <script src="node_modules/moment/moment.js"></script>
+    <script src="node_modules/knockout/build/output/knockout-latest.debug.js"></script>
+</head>
+
+<body style="text-align: center; padding-top: 100px">
+
+    <div class="form-inline" data-bind="with: current">
+        <div class="form-group">
+            <label>Title</label>
+            <input class="form-control" type="text" data-bind="value: title" />
+        </div>
+        <div class="form-group">
+            <label>Title</label>
+            <input class="form-control" type="text" data-bind="value: description" />
+        </div>
+    </div>
+
+    <h2>List Book</h2>
+
+    <button class="btn btn-primary" data-bind="click: add">Add</button class="form-control">
+    <!-- ko if: ko.toJS(current).id -->
+    <button class="btn btn-primary" data-bind="click: save">Update</button class="form-control">
+    <!-- /ko -->
+    <!-- ko if: !ko.toJS(current).id -->
+    <button class="btn btn-primary" data-bind="click: save">Save</button class="form-control">
+    <!-- /ko -->
+    <table class="table" style="padding: 10px;">
+        <thead>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Updated date</th>
+            <th colspan="2">Actions</th>
+        </thead>
+        <tbody data-bind="foreach: books">
+            <tr>
+                <td data-bind="text: id" style="text-align: center;"></td>
+                <td data-bind="text: title"> </td>
+                <td data-bind="text: description"> </td>
+                <td data-bind="date: date"> </td>
+                <td><button data-bind="click: () => { $parent.update($data) }">Update</button></td>
+                <td><button data-bind="click: () => { $parent.delete(id) }">Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script type="module" src="app.js"></script>
+</body>
+
+</html>
