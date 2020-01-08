@@ -33,10 +33,8 @@ class KoApp {
                 console.log(x);
 
                 return x;
-            }/*,
-                write(value) {
-                    
-                }*/
+            }
+
         });
 
         current.id.subscribe((v) => {
